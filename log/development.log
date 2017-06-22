@@ -1,0 +1,489 @@
+Started GET "/" for 127.0.0.1 at 2017-06-22 20:20:46 +0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/anubis/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/railties-5.1.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/anubis/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/railties-5.1.1/lib/rails/templates/rails/welcome/index.html.erb (16.2ms)
+Completed 200 OK in 1089ms (Views: 61.7ms)
+
+
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (35.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (27.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20170622174256)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (5.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.6ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35mSQL (9.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170622174256"]]
+  [1m[35m (318.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreatePosts (20170622174613)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (6.4ms)[0m  [1m[35mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "content" text, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170622174613"]]
+  [1m[35m (336.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (6.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-06-22 17:47:42.917082"], ["updated_at", "2017-06-22 17:47:42.917082"]]
+  [1m[35m (10.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (4.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+Started GET "/" for 127.0.0.1 at 2017-06-22 20:57:52 +0300
+  [1m[35m (13.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.slim within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.slim within layouts/application (162.0ms)
+Completed 200 OK in 7445ms (Views: 7357.7ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2017-06-22 20:58:29 +0300
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.slim within layouts/application
+  Rendered posts/_form.html.slim (318.2ms) [cache miss]
+  Rendered posts/new.html.slim within layouts/application (346.0ms)
+Completed 200 OK in 602ms (Views: 499.8ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2017-06-22 21:00:06 +0300
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.slim within layouts/application
+  Rendered posts/_form.html.slim (46.2ms) [cache miss]
+  Rendered posts/new.html.slim within layouts/application (87.4ms)
+Completed 200 OK in 277ms (Views: 266.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2017-06-22 21:05:26 +0300
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.slim within layouts/application
+  Rendered posts/_form.html.slim (41.5ms) [cache miss]
+  Rendered posts/new.html.slim within layouts/application (75.2ms)
+Completed 200 OK in 278ms (Views: 274.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2017-06-22 21:06:25 +0300
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.slim within layouts/application
+  Rendered posts/_form.html.slim (54.4ms) [cache miss]
+  Rendered posts/new.html.slim within layouts/application (78.5ms)
+Completed 200 OK in 290ms (Views: 283.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2017-06-22 21:09:11 +0300
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.slim within layouts/application
+  Rendered posts/_form.html.slim (32.9ms) [cache miss]
+  Rendered posts/new.html.slim within layouts/application (80.4ms)
+Completed 200 OK in 24766ms (Views: 24756.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2017-06-22 21:10:52 +0300
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.slim within layouts/application
+  Rendered posts/_form.html.slim (70.2ms) [cache miss]
+  Rendered posts/new.html.slim within layouts/application (128.8ms)
+Completed 200 OK in 639ms (Views: 616.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2017-06-22 21:10:54 +0300
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.slim within layouts/application
+  Rendered posts/_form.html.slim (59.0ms) [cache miss]
+  Rendered posts/new.html.slim within layouts/application (96.1ms)
+Completed 200 OK in 443ms (Views: 433.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2017-06-22 21:12:34 +0300
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.slim within layouts/application
+  Rendered posts/_form.html.slim (74.9ms) [cache miss]
+  Rendered posts/new.html.slim within layouts/application (109.0ms)
+Completed 200 OK in 487ms (Views: 477.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-06-22 21:16:15 +0300
+  [1m[35m (4.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering /home/anubis/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/devise-4.3.0/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered /home/anubis/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (12.1ms) [cache miss]
+  Rendered /home/anubis/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/devise-4.3.0/app/views/devise/registrations/new.html.erb within layouts/application (178.3ms)
+Completed 200 OK in 3687ms (Views: 3492.1ms | ActiveRecord: 2.8ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-06-22 21:17:28 +0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"wvmODUNHNAALSq+t67paaFft888Zz6EU/wtmNerncDekH7MSmNX0VXTtXTg5Y8qow14/9nlhfgicHIsuIfl4rg==", "user"=>{"email"=>"mieshanich@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mieshanich@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (5.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "mieshanich@gmail.com"], ["encrypted_password", "$2a$11$qHLILeYf6Iwu/bbfKgsQJu8/mPyN9Pumdgixf7oIW0KbybglrZGHy"], ["created_at", "2017-06-22 18:17:29.733775"], ["updated_at", "2017-06-22 18:17:29.733775"]]
+  [1m[35m (9.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.7ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = ?, "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["sign_in_count", 1], ["current_sign_in_at", "2017-06-22 18:17:29.850069"], ["last_sign_in_at", "2017-06-22 18:17:29.850069"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["updated_at", "2017-06-22 18:17:29.870707"], ["id", 1]]
+  [1m[35m (10.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 1186ms (ActiveRecord: 29.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-22 21:17:30 +0300
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.slim within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.slim within layouts/application (134.2ms)
+Completed 200 OK in 457ms (Views: 403.8ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2017-06-22 21:17:49 +0300
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.slim within layouts/application
+  Rendered posts/_form.html.slim (66.5ms) [cache miss]
+  Rendered posts/new.html.slim within layouts/application (92.7ms)
+Completed 200 OK in 444ms (Views: 372.8ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2017-06-22 21:18:27 +0300
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YzjK2ic94LBUVGNW0Tt+NKp699LWgP/ZOv2wt5NaxcxPkYLZKsp/qeN265nAmRUo7pNLTU0oaemsIczWqmnTgA==", "post"=>{"title"=>"First post", "content"=>"Post content"}, "commit"=>"Create Post"}
+Completed 500 Internal Server Error in 1482ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `curent_user' for #<PostsController:0xb3fa4188>
+Did you mean?  current_user):
+  
+app/controllers/posts_controller.rb:27:in `create'
+Started POST "/posts" for 127.0.0.1 at 2017-06-22 21:23:02 +0300
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YzjK2ic94LBUVGNW0Tt+NKp699LWgP/ZOv2wt5NaxcxPkYLZKsp/qeN265nAmRUo7pNLTU0oaemsIczWqmnTgA==", "post"=>{"title"=>"First post", "content"=>"Post content"}, "commit"=>"Create Post"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (18.9ms)[0m  [1m[32mINSERT INTO "posts" ("title", "content", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "First post"], ["content", "Post content"], ["user_id", 1], ["created_at", "2017-06-22 18:23:03.364209"], ["updated_at", "2017-06-22 18:23:03.364209"]]
+  [1m[35m (8.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/posts/1
+Completed 302 Found in 586ms (ActiveRecord: 54.1ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2017-06-22 21:23:03 +0300
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.slim within layouts/application
+  Rendered posts/show.html.slim within layouts/application (81.6ms)
+Completed 200 OK in 493ms (Views: 446.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2017-06-22 21:25:00 +0300
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.slim within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/show.html.slim within layouts/application (76.3ms)
+Completed 200 OK in 409ms (Views: 397.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-06-22 21:26:36 +0300
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.slim within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.slim within layouts/application (87.7ms)
+Completed 200 OK in 426ms (Views: 418.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-06-22 21:26:54 +0300
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.slim within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.slim within layouts/application (71.9ms)
+Completed 200 OK in 363ms (Views: 356.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-06-22 21:34:18 +0300
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.slim within layouts/application
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.slim within layouts/application (49.7ms)
+Completed 200 OK in 335ms (Views: 330.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-22 21:34:41 +0300
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.slim within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.slim within layouts/application (43.3ms)
+Completed 200 OK in 317ms (Views: 306.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-22 21:38:19 +0300
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.slim within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.slim within layouts/application (55.9ms)
+Completed 200 OK in 310ms (Views: 303.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-22 21:47:06 +0300
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.slim within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.slim within layouts/application (52.4ms)
+Completed 500 Internal Server Error in 2978ms (ActiveRecord: 0.8ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `new_user_registration' for #<#<Class:0x81f6f12c>:0xb3a40624>
+Did you mean?  new_user_registration_url
+               new_user_registration_path):
+    14:       <a class="navbar-brand" href="/">Brand</a>
+    15:     </div>
+    16:     <ul class="nav navbar-nav navbar-right">
+    17:     <%= link_to "Sing up", new_user_registration %>
+    18:     </ul>
+    19:     </div>
+    20:     </nav>
+  
+app/views/layouts/application.html.erb:17:in `_app_views_layouts_application_html_erb__468641975__1047835478'
+Started GET "/" for 127.0.0.1 at 2017-06-22 21:48:05 +0300
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.slim within layouts/application
+  [1m[36mPost Load (8.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.slim within layouts/application (43.1ms)
+Completed 200 OK in 306ms (Views: 294.2ms | ActiveRecord: 8.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-22 21:49:45 +0300
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.slim within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.slim within layouts/application (54.4ms)
+Completed 200 OK in 358ms (Views: 354.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-22 21:52:41 +0300
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.slim within layouts/application
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mUser Load (5.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.slim within layouts/application (42.7ms)
+Completed 200 OK in 270ms (Views: 253.0ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-22 21:53:48 +0300
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.slim within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.slim within layouts/application (37.7ms)
+Completed 200 OK in 322ms (Views: 318.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-22 21:57:30 +0300
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.slim within layouts/application
+  [1m[36mPost Load (7.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.slim within layouts/application (62.6ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 342ms (Views: 331.3ms | ActiveRecord: 8.1ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-06-22 21:57:35 +0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"b9noXARDABGpZDgavoVCRZOHnFh5cUb2dK+P/2o5jqAJP9VD39HARNbDyo9sXNKFBzRQYRnfmeoXuGLkoSeGOQ=="}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 77ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-22 21:57:35 +0300
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.slim within layouts/application
+  [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.slim within layouts/application (54.9ms)
+Completed 200 OK in 363ms (Views: 336.9ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-22 22:01:06 +0300
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.slim within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.slim within layouts/application (51.4ms)
+Completed 500 Internal Server Error in 1408ms (ActiveRecord: 1.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `member_signed_in?' for #<#<Class:0x81f6f12c>:0x831693b4>):
+    14:       <a class="navbar-brand" href="/">Brand</a>
+    15:     </div>
+    16:     <ul class="nav navbar-nav navbar-right">
+    17:     <% if member_signed_in? %>
+    18:     <li>
+    19:      <%= link_to "Sing up", new_user_registration_path %>
+    20:     </li>
+  
+app/views/layouts/application.html.erb:17:in `_app_views_layouts_application_html_erb__468641975__1047840918'
+Started GET "/" for 127.0.0.1 at 2017-06-22 22:04:10 +0300
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.slim within layouts/application
+  [1m[36mPost Load (7.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.slim within layouts/application (48.0ms)
+Completed 500 Internal Server Error in 1418ms (ActiveRecord: 7.9ms)
+
+
+  
+ActionView::Template::Error (undefined method `member_signed_in?' for #<#<Class:0x81f6f12c>:0xb4585c14>):
+    14:       <a class="navbar-brand" href="/">Brand</a>
+    15:     </div>
+    16:     <ul class="nav navbar-nav navbar-right">
+    17:     <% if member_signed_in? %>
+    18:     <li>
+    19:      <%= link_to "Sing up", new_user_registration_path %>
+    20:     </li>
+  
+app/views/layouts/application.html.erb:17:in `_app_views_layouts_application_html_erb__468641975__634674818'
+Started GET "/" for 127.0.0.1 at 2017-06-22 22:05:13 +0300
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.slim within layouts/application
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.slim within layouts/application (54.4ms)
+Completed 500 Internal Server Error in 2066ms (ActiveRecord: 1.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `member_signed_in?' for #<#<Class:0x81f6f12c>:0xb47cc874>):
+    14:       <a class="navbar-brand" href="/">Brand</a>
+    15:     </div>
+    16:     <ul class="nav navbar-nav navbar-right">
+    17:     <% if member_signed_in? %>
+    18:     <li>
+    19:      <%= link_to "Sing up", new_user_registration_path %>
+    20:     </li>
+  
+app/views/layouts/application.html.erb:17:in `_app_views_layouts_application_html_erb__468641975__634760258'
+Started GET "/" for 127.0.0.1 at 2017-06-22 22:06:57 +0300
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.slim within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mUser Load (12.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.slim within layouts/application (41.5ms)
+Completed 200 OK in 249ms (Views: 229.5ms | ActiveRecord: 12.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-22 22:10:01 +0300
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.slim within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.slim within layouts/application (33.4ms)
+Completed 200 OK in 273ms (Views: 269.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-22 22:14:46 +0300
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.slim within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.slim within layouts/application (48.0ms)
+Completed 200 OK in 326ms (Views: 322.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-06-22 22:15:06 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering /home/anubis/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/devise-4.3.0/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered /home/anubis/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (3.1ms) [cache miss]
+  Rendered /home/anubis/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/devise-4.3.0/app/views/devise/registrations/new.html.erb within layouts/application (43.6ms)
+Completed 200 OK in 328ms (Views: 322.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-22 22:15:08 +0300
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.slim within layouts/application
+  [1m[36mPost Load (7.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mUser Load (17.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.slim within layouts/application (53.9ms)
+Completed 200 OK in 320ms (Views: 292.7ms | ActiveRecord: 24.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-22 22:15:10 +0300
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.slim within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.slim within layouts/application (64.7ms)
+Started GET "/" for 127.0.0.1 at 2017-06-22 22:15:10 +0300
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.slim within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.slim within layouts/application (81.3ms)
+Completed 200 OK in 462ms (Views: 446.9ms | ActiveRecord: 0.8ms)
+
+
+Completed 200 OK in 378ms (Views: 361.7ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-06-22 22:15:55 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/anubis/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/anubis/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (7.0ms) [cache miss]
+  Rendered /home/anubis/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (61.1ms)
+Completed 200 OK in 386ms (Views: 376.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2017-06-22 22:16:00 +0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FSSFmWjcgLg5caCWhMXQGeREYZbi014te/wUgCQoj1NrSQkdpUfL+Ilmq+9IwOX++yjNLrJg8aPHZVtZLBYj6g==", "user"=>{"email"=>"mieshanich@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  [1m[36mUser Load (11.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "mieshanich@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (11.0ms)[0m  [1m[33mUPDATE "users" SET "remember_created_at" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["remember_created_at", "2017-06-22 19:16:00.957088"], ["updated_at", "2017-06-22 19:16:00.962307"], ["id", 1]]
+  [1m[35m (10.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (7.0ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = ?, "current_sign_in_at" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["sign_in_count", 2], ["current_sign_in_at", "2017-06-22 19:16:01.014733"], ["updated_at", "2017-06-22 19:16:01.026569"], ["id", 1]]
+  [1m[35m (8.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 903ms (ActiveRecord: 48.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-06-22 22:16:01 +0300
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.slim within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/index.html.slim within layouts/application (52.7ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 295ms (Views: 287.8ms | ActiveRecord: 1.4ms)
+
+
